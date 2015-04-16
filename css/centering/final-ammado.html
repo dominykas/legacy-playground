@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>center test</title>
+        <style type="text/css">
+            body {
+                width: 780px;
+                margin: 50px;
+            }
+            
+            .placeholder1, .placeholder2 {
+                padding: 5px;
+                margin: 5px;
+                background-color: #cfc;
+                float: left;
+            }
+            
+
+			.placeholder1 .thumbArea { width: 120px; height: 90px; }
+			.placeholder1 .shiftLeft { margin-left: 60px; }
+			.placeholder1 img { height: 90px; }
+
+			.placeholder2 .thumbArea { width: 90px; height: 60px; }
+			.placeholder2 .shiftLeft { margin-left: 45px; }
+			.placeholder2 img { height: 60px; }
+            
+            span.thumbArea, span.thumbArea span { display: block; }
+            .thumbArea img { border-left: 1px solid #f00;border-right: 1px solid #f00;border-bottom: 1px solid #f00;border-top:none; }
+            .thumbArea  { position: relative; overflow: hidden;  border: 1px solid #f00; }
+            .floatToFix { position: relative; float: left; }
+            .unshift 	{ position: relative; left: -50%; }
+        </style>
+    </head>
+    <body>
+        
+        <h1>center test</h1>
+        
+        <p>Centering elements horizontally, when the child is wider than the parent.</p>
+        
+        <span class="placeholder1">
+            <span class="thumbArea">
+                <span class="shiftLeft">
+                    <span class="floatToFix">
+                        <span class="unshift"><a href="#"><img src="wide.gif" border=0 alt="Wide"></a></span>
+                    </span>
+                </span>
+            </span>
+        </span>
+
+        <span class="placeholder1">
+            <span class="thumbArea">
+                <span class="shiftLeft">
+                    <span class="floatToFix">
+                        <span class="unshift"><a href="#"><img src="tall.gif" border=0 alt="Tall"></a></span>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        <span class="placeholder2">
+            <span class="thumbArea">
+                <span class="shiftLeft">
+                    <span class="floatToFix">
+                        <span class="unshift"><a href="#"><img src="wide.gif" border=0 alt="Wide"></a></span>
+                    </span>
+                </span>
+            </span>
+        </span>
+
+        <span class="placeholder2">
+            <span class="thumbArea">
+                <span class="shiftLeft">
+                    <span class="floatToFix">
+                        <span class="unshift"><a href="#"><img src="tall.gif" border=0 alt="Tall"></a></span>
+                    </span>
+                </span>
+            </span>
+        </span>
+
+	</body>
+</html>

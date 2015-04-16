@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head><title>Print test</title></head>
+<body>
+
+	<script>
+		function doPrint()
+		{
+			document.getElementById('test').innerHTML='Printing...';
+			
+			// Chrome requires an extra timeout - otherwise it won't show the initial message before displaying dialog
+			setTimeout(function(){
+				
+				// inner timeout will fire AFTER the dialog is closed on all browsers but IE6/7
+				setTimeout(function(){
+					document.getElementById('test').innerHTML = 'Dialog closed';
+				}, 0);
+				window.print();
+			
+			}, 0);
+		}
+	</script>
+
+	<button onclick="doPrint();">Print</button>
+
+	<div id="test" style="position: absolute;right:100px;top:100px;font-size:20px;font-weight:bold;"></div>
+	
+</body>
+</html>

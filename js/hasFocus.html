@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>hasFocus and activeElement simulation</title>
+
+<script type="text/javascript">//<![CDATA[
+	function checkFocus()
+	{
+		var s="";
+		
+		s+="document.activeElement: "+(document.activeElement && document.activeElement.id ? "#"+document.activeElement.id : "document");
+		s+="\n\nhasFocus:";
+		s+="\n#test-link-normal - "+document.getElementById('test-link-normal').hasFocus;
+		s+="\n#test-link-tabindex - "+document.getElementById('test-link-tabindex').hasFocus;
+		s+="\n#test-input - "+document.getElementById('test-input').hasFocus;
+		
+		alert(s);
+	}
+//]]></script>
+	
+<!-- the actual hasFocus implementation - don't forget to minify it further ;) -->
+<script type="text/javascript">//<![CDATA[
+(function() { // closure
+    var d = document, // shortcut
+	s = function(h, t) { // main setFocus handler
+		if (t.tagName) { // i'm too lazy to go further than this, but I want this to work on proper tags only
+			t.hasFocus=h; 
+			if (a) document.activeElement=t; // don't touch activeElement if browser supports it - IE6 will spit errors
+		} 
+	},
+	i = function(e) { s(true, e.target || e.srcElement); }, // focus handler
+	o = function(e) { s(false, e.target || e.srcElement); }, // blur handler
+	f = d.addEventListener ? "addEventListener" : "attachEvent", // IE uses attachEvent
+	n = typeof d.onfocusin=="object" ? ['onfocusin','onfocusout'] : ['focus','blur'], // event names are different cross-browser - focus doesn't bubble
+	a = typeof document.activeElement=="object" ? false : true;
+
+	d[f](n[0],i,true); d[f](n[1],o,true); // can you understand this?
+})();
+//]]></script>
+	
+</head>
+<body onload="setTimeout(checkFocus,2000);">
+
+<h1>hasFocus and activeElement simulation</h1>
+
+<p>This is a demonstration of hasFocus and activeElement implementation before HTML5 comes out. 2 seconds after the document loads, an alert should appear, telling you what has focus, and what doesn't.</p>
+
+<p>
+	<a id="test-link-normal" href="http://www.dominykas.com/">Test link</a>
+	<br/>
+	<a id="test-link-tabindex" tabindex="0" href="http://www.dominykas.com/">Test link</a> (focusable, with tabIndex)
+	<br/>
+	<input id="test-input" type="text" value="Test input" />
+</p>
+
+</body>

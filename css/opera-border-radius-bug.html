@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Button border bug</title>
+	<style>
+		input, button
+		{
+			color: #ccc;
+			background-color: #008;
+			border: 1px solid #fff;
+			border-radius: 6px;
+		}
+		.b1
+		{
+			border: 0px none;
+		}
+	</style>
+</head>
+<body>
+<p><input type="submit" class="b1" value="input[type=submit], radius, no border" /> - loses bg</p>
+<p><input type="submit" class="b2" value="input[type=submit], radius, border" /> - keeps bg</p>
+<p><button class="b1">button, radius, no border</button> - keeps bg</p>
+<p><button class="b2">button, radius, border</button> - keeps bg</p>
+</body>
+</html>

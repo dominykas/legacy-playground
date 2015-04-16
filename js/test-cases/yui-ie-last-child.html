@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script language="javascript" type="text/javascript" src="http://yui.yahooapis.com/2.9.0pr4/build/utilities/utilities.js"></script>
+<script language="javascript" type="text/javascript" src="http://yui.yahooapis.com/2.9.0pr4/build/selector/selector-debug.js"></script>
+</head>
+<body>
+
+	<ul class="test1">
+		<li><a href="#one1">First</a></li>
+		<li><a href="#two1">Second</a></li>
+		<li><a href="#three1">Third</a></li>
+		<li><a href="#four1">Last</a></li>
+		<!-- end .test1 -->
+	</ul>
+
+	<ul class="test2">
+		<li><a href="#one2">First</a></li>
+		<li><a href="#two2">Second</a></li>
+		<li><a href="#three2">Third</a></li>
+		<li><a href="#four2">Last</a></li>
+	</ul>
+
+<script>
+alert(YAHOO.util.Selector.query('ul.test1 li:last-child a', null, true)); // null on IE, node expected
+alert(YAHOO.util.Selector.query('ul.test2 li:last-child a', null, true)); // node
+</script>
+	
+</body>
+</html>
